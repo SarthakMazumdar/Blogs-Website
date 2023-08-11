@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ASC Blogggers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+
+        function popup() {
+            alert("Response Submitted!");
+        }
+    </script>
+
+</head>
+
+
+
+<style>
+    h2 {
+        font-weight: bolder;
+        text-decoration: underline;
+        font-family: Georgia;
+    }
+
+    #list {
+        font-size: medium;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .btn {
+        transition: 0.5s ease-in-out;
+    }
+
+    .btn:hover {
+        color: rgb(47, 128, 178);
+        text-decoration: underline;
+        transform: scale(1.5);
+    }
+
+    .starter {
+        color: white;
+        padding-top: 2%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+    #btn1 {
+        border-radius: 30px;
+        padding: 10px 30px;
+        border-style: hidden;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        margin-top: 20px;
+        transition: 1.5s ease;
+    }
+
+    #btn1:hover {
+        border-radius: 50px;
+        background: url("https://loading.io/assets/img/p/pricing/rocket.svg")no-repeat center;
+        background-color: rgb(255, 255, 255);
+        font-weight: bolder;
+        color: white;
+        transform: scale(2);
+    }
+
+    #msg {
+        height: 200px;
+        width: 60%;
+    }
+
+    #msg1 {
+        height: 300px;
+        width: 90%;
+    }
+
+    input {
+        border-radius: 10px;
+    }
+
+
+    #yu {
+        text-align: center;
+        background-color: white;
+        font-size: larger;
+        font-weight: bolder;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    }
+
+    label {
+        padding-left: 1%;
+        font-size: larger;
+        font-weight: bolder;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    #about:hover {
+        background: url("https://media0.giphy.com/media/TlK63EChAGgxq7kTcFW/giphy.gif?cid=ecf05e47qgzeq5ndg7llsz9ycnwbaa5frfbhjcla7de0hqx5&rid=giphy.gif&ct=g");
+        font-weight: bolder;
+        color: rgb(255, 255, 255);
+    }
+
+    #send:hover {
+        background-image: url("https://media0.giphy.com/media/TlK63EChAGgxq7kTcFW/giphy.gif?cid=ecf05e47qgzeq5ndg7llsz9ycnwbaa5frfbhjcla7de0hqx5&rid=giphy.gif&ct=g");
+        font-weight: bolder;
+    }
+
+    h6 {
+        float: right;
+        color: deeppink;
+    }
+
+    #img2 {
+        transition: 0.5s ease;
+    }
+
+    #img2:hover {
+        transform: scale(1.2);
+        box-shadow: 24 slategray;
+    }
+</style>
+<!-- Code for nav bar -->
+
+<body>
+    <div class="container-fluid" style="text-align: center;">
+        <div class="nav-item">
+            <div class="btn-group-sm" style="text-align: center;margin-left: 10%;">
+                <div class="btn"><a href="#list">Home</a></div>
+                <div class="btn"><a href="#about">About</a></div>
+                <div class="btn"><a href="#form1">Message_us</a></div>
+                <div class="btn"><a href="#myForm">Write</a></div>
+                <div class="btn"><a href="logingenereal.html">Login/Signup</a></div>
+                <div class="btn"><a id="cnct" href="mailto:danghiabhinav15@gmail.com">Mail_Us</a></div>
+                <button style="float: right;margin-left: 1%;border: none;">
+                    <img id="ty" src="https://purepng.com/public/uploads/thumbnail/search-icon-ngl.png" height="20"
+                        width="20"></button>
+                <input id="srch" name="srch" type="text" style="float: right;"
+                    src="https://purepng.com/public/uploads/thumbnail/search-icon-ngl.png" height="10%" width="10%"
+                    placeholder="Search Blogs..." onkeyup="search_bar()">
+                <p id="demo"></p>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            // JavaScript code for search bar in navigation menu
+            function search_bar() {
+                let input = document.getElementById('srch').value
+                input = input.toLowerCase();
+                let x = document.getElementsByTagName('li');
+
+                for (i = 0; i < x.length; i++) {
+                    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                        x[i].style.display = "none";
+                    }
+                    else {
+                        x[i].style.display = "list-item";
+                    }
+                }
+            }
+
+        </script>
+
+        <!-- Creating First look container -->
+        <div class="container-fluid" style="background-color: rgb(15, 15, 172);padding-bottom: -50px;">
+            <div class="starter">
+                <p
+                    style="font-size: 50px;font-family: url(https://www.dafont.com/search.php?q=lemonmilk);letter-spacing: 1px;font-weight:bolder;">
+                    Create a blog<br>worth sharing</p>
+                <p style="color:rgb(178, 217, 224);">Get a full suite of intuitive design features and powerful
+                    marketing tools<br> to create a unique blog that leaves a lasting impression.</p>
+                <button id="btn1" href="#myForm"><a href="#myForm">Start Blogging</a></button>
+                <br><br>
+
+                <div class="container-md  rounded-top"
+                    style="background-color: rgb(48, 39, 39);display: inline-flex;height:100% ;width:65%;padding: 0%;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1461/1461754.png" height="18%" width="18%"
+                        style="float:left;padding-left: 0%;margin-left: -18%;">
+                    <div class="card-img">
+                        <div class="align-items-lg-start">
+                            <img src="https://i.pinimg.com/originals/b4/70/42/b47042f66a926a3536c7a536c5a08293.png"
+                                height="100%" width="100%" style="margin: 0%;padding: 0%;">
+
+                        </div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/418/418481.png?w=1060&t=st=1679813018~exp=1679813618~hmac=1c2c9cb153fa076ade4e841cd824045c80883e0bec5605f7dc1f1d995b4c2a7f"
+                            height="20%" width="15%" style="float: right;margin-top: -15%;margin-right: -16%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="background-color:rgb(15, 15, 172);">
+            <h4
+                style="margin-bottom: 0%;font-family:monospace;text-align: center;color: white;padding-left: 50%;font-size: medium;">
+                Supported On All Devices</h4>
+            <div class="img-fluid">
+                <img id="img2" src="https://i.pinimg.com/originals/f4/7f/d8/f47fd896add554744b4114d964b61b41.gif"
+                    height="5%" width="15%" style="margin-top:-74% ;margin-left: 2%;">
+            </div>
+        </div>
+    </div><br><br>
+
+    <!-- Content printed here after adding in blog input -->
+    <br><br>
+    <div style="margin: 0% 10%;">
+        <div class="table-responsive-md">
+            <ul id="list" border="1" style="border-radius: 20px;border-collapse: separate;border-spacing: 5%;"
+                type="none">
+                <li id="list"></li>
+                <div id="txt"></div>
+            </ul>
+        </div>
+        <button type="button" onclick="remove()" value="Delete"
+            style="float:right;border-style: hidden;background-color: rgb(41, 41, 142);padding: 10px 40px;border-radius: 20px;color: white;border-color:rgb(41, 41, 142) ;margin-bottom: 5%;">Delete</button>
+
+    </div>
+
+    <!-- Form input to enter data in blog -->
+    <div class="container-fluid">
+        <form id="myForm" name="myForm" style="padding:0% 10%;">
+            <h1
+                style="font-size: 70px;text-align: center;background-image: url(https://media.istockphoto.com/id/1422735620/vector/the-graphic-design-element-and-abstract-geometric-background-with-isometric-vector-blocks.webp?s=1024x1024&w=is&k=20&c=mJaZUstK3EmUD2WzZyO2N68ZgUW9CoE-aLnjrcVKn9E=);padding:10% 0% 25% 0%;margin-bottom: -28%;color:rgb(41, 41, 142);text-transform: uppercase;text-shadow: 5px ;">
+                Start Writing Here!</h1><br><br><br><br><br>
+            <label id="yu" name="ttl">Title :</label><input type="text" name="ttl" id="ttl" required><br><br>
+            <label id="yu" name="Author"> Author:</label><input id="ht" type="text" name="Author" required><br><br>
+            <label id="yu" name="agmail">Gmail :</label><input id="gm" type="email" name="agmail" required><br><br>
+            <label id="yu" name="msg1">Your content:</label><br>
+            <textarea rows="4" cols="6" name="msg1" id="msg1" type="text" required></textarea><br><br>
+            <input type="submit" value="submit" onclick="addObj()"
+                style="border-style: hidden;background-color: rgb(41, 41, 142);border-radius: 20px;padding: 10px 40px;margin-bottom: 30px;color: white;border-color:rgb(41, 41, 142) ;"
+                id="btn3">
+        </form>
+    </div>
+    <br><br>
+
+
+
+
+
+    <script>
+        // Code to create todays date and time
+        var currentdate = new Date();
+        var datetime = "Last Sync: " + currentdate.getDay() + "/" + currentdate.getMonth()
+            + "/" + currentdate.getFullYear() + " @ "
+            + currentdate.getHours() + ":"
+            + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+
+        // Creating function to print/add blog content in Home
+        function addObj() {
+
+            var str = $("#msg1");
+            var t = $("#ttl");
+            var a = $("#ht");
+            var p = $("#gm");
+            var l = "<h2>" + t.val() + "</h2>";
+            var s = "<li>" + str.val() + "</li>" + "<br>" + "<br>";
+            var o = "<h6>" + "// Author--> " + a.val() + "</h6>" + "<a>" + "www." + p.val() + "</a>" + "<br>" + "<p>" + "Posted On: " + currentdate + "</p>" + "___________________________________________________________________________________________________________________________________________________" + "<br>" + "<br>";
+
+            var g = l + s + o;
+
+            $("#list").append(g);
+            str.val("");
+
+        }
+        function remove() {
+            var str = $("#msg1").val();
+            str = str.toUpperCase();
+            var d = $("#list").children();
+            var n = d.length;
+            for (var i = 0; i < n; i++) {
+                if (d[i].textContent.toUpperCase() == str) {
+                    d[i].remove(); break;
+                }
+            }
+            $("#msg1").val("");
+        }
+    </script>
+
+    <!-- About section -->
+    <div class="container-md" id="about">
+        <div class="text-secondary"><span style="font-size: 30px;" id="#about"><span
+                    style="font-size: 60px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;text-decoration: overline;">ABOUT
+                    US:</span><br><br>Hello!</span><br>____We are the contributors for the Website you are using
+            Now!<br>We are not just team also we are best friends from the starting of the college.Hope You like our
+            Work :-) <br>Contributors LinkedIn--> <a
+                href="https://www.linkedin.com/in/abhinav-k-64304618b/">abhinav</a>,<a
+                href="https://www.linkedin.com/in/sarthak-mazumdar-622144212/">sarthak</a>,<a
+                href="https://www.linkedin.com/in/chirag-sharma-713362266">chirag</a></div>
+    </div><br><br><br>
+
+    <!-- Contact form -->
+    <div class="container-fluid">
+        <form id="form1" name="form" onsubmit="popup()" method="post" align="center"
+            style="font-family: Verdana, Geneva, Tahoma, sans-serif;color: rgb(0, 0, 0);background-image: url(https://swall.teahub.io/photos/small/313-3132029_linkedin-wallpaper-wallpapersafari-background-image-for-form-in.jpg);background-repeat: no-repeat;background-size:100% 100%;">
+            <p style="font-size: 40px;">Write Here!</p>
+            <p style="text-decoration: underline;">If any Query, Suggestions, Credits <br>Send a message to team!</p>
+            <label>Your Name:</label><br><input type="text" name="fname" required><br><br>
+            <label>Gmail:</label><br><input type="email" name="mail" size="28" required><br><br>
+            <label>Your message:</label><br><input name="msg" id="msg" type="text" size="20" height="50"
+                required><br><br>
+            <input type="submit" id="send" value="submit"
+                style="border-style:solid;background-color: white;border-radius: 20px;padding: 5px 40px;margin-bottom: 30px;border: 1px;"
+                href="mailto:danghiabhinav15@gmail.com">
+        </form>
+
+        <!-- Footer section -->
+        <a href="#Top">go to TOP</a>
+    </div>
+
+
+</body>
+
+</html>
